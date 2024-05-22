@@ -1,6 +1,7 @@
 package com.microservice.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.microservice.auth.dto.UserDTO;
@@ -12,6 +13,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO getUserByUsername(String username) {
@@ -25,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
+        String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
+        userDTO.setPassword(encodedPassword);
+
         User user = User.fromUserDTO(userDTO);
         user = userRepository.save(user);
 
