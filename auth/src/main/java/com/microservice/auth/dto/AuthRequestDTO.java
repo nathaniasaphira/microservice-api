@@ -1,7 +1,5 @@
 package com.microservice.auth.dto;
 
-import com.microservice.auth.entity.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -12,12 +12,13 @@ import com.microservice.auth.dto.UserDTO;
 import com.microservice.auth.service.AuthService;
 
 @RestController
+@RequestMapping("/api")
 public class LoginController {
 
     @Autowired
     private AuthService authService;
 
-    @PostMapping(value = { "/loginUser" }, consumes = {"application/xml","application/json"})
+    @PostMapping(value = { "/login" }, consumes = {"application/xml","application/json"})
     public ResponseEntity<UserDTO> login(@RequestBody AuthRequestDTO authRequest) {
         return ResponseEntity.ok(authService.login(authRequest.getUsername(), authRequest.getPassword()));
     }

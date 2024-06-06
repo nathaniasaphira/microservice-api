@@ -34,7 +34,7 @@ If you only want to try the login feature, you can use the provided account:
 
     ```
     HTTP Method: POST 
-    URL link: http://localhost:8081/registerUser
+    URL link: http://localhost:8081/api/register
     Body (JSON):
         {
             "username": "<YOUR_USERNAME>",
@@ -46,7 +46,7 @@ If you only want to try the login feature, you can use the provided account:
 
     ```
     HTTP Method: POST 
-    URL link: http://localhost:8081/loginUser
+    URL link: http://localhost:8081/api/login
     Body (JSON):
         {
             "username": "<YOUR_USERNAME>",
