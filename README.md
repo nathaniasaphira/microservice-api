@@ -26,8 +26,8 @@ Please make sure you have setup your db ready before following the steps below. 
 
 If you only want to try the login feature, you can use the provided account:
 
-- username: `userdef`
-- password: `defpassuser`
+> username: `userdef` </br>
+> password: `defpassuser`
 
 1. From your POSTMAN, try sending a POST request to register a new user as the following:
 
