@@ -5,7 +5,6 @@ Below are list of the used resources for this project:
 - Dump SQL: `db/microservice_auth_db`
 
 ## How to Test
---------------
 
 Please make sure you have setup your db ready before following the steps below. You can find the db as listed in the [Resources](#resources) tab above.
 
