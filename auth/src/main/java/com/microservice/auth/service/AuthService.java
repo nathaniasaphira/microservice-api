@@ -1,6 +1,6 @@
 package com.microservice.auth.service;
 
-import com.microservice.auth.dto.UserDTO;
+import com.microservice.auth.dto.response.LoginResponse;
 
 public interface AuthService {
 
@@ -10,5 +10,5 @@ public interface AuthService {
      * @param password
      * @return
      */
-    UserDTO login(String username, String password);
+    LoginResponse login(String username, String password);
 }

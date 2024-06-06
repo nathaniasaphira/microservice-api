@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.microservice.auth.dto.UserDTO;
+import com.microservice.auth.dto.request.RegisterRequest;
 import com.microservice.auth.entity.User;
 import com.microservice.auth.repository.UserRepository;
 
@@ -18,24 +18,24 @@ public class UserServiceImpl implements UserService {
 private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDTO getUserByUsername(String username) {
+    public RegisterRequest getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new RuntimeException("Unable to find user with username: " + username);
         }
 
-        return UserDTO.fromUser(user);
+        return RegisterRequest.fromUser(user);
     }
 
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
+    public RegisterRequest createUser(RegisterRequest userDTO) {
         String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
         userDTO.setPassword(encodedPassword);
 
         User user = User.fromUserDTO(userDTO);
         user = userRepository.save(user);
 
-        return UserDTO.fromUser(user);
+        return RegisterRequest.fromUser(user);
     }
     
 }

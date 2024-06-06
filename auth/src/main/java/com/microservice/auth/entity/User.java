@@ -1,6 +1,6 @@
 package com.microservice.auth.entity;
 
-import com.microservice.auth.dto.UserDTO;
+import com.microservice.auth.dto.request.RegisterRequest;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +25,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    public static User fromUserDTO(UserDTO userDTO) {
+    public static User fromUserDTO(RegisterRequest userDTO) {
         User user = new User();
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
@@ -33,8 +33,8 @@ public class User {
         return user;
     }
 
-    public UserDTO toUserDTO() {
-        UserDTO userDto = new UserDTO();
+    public RegisterRequest toUserDTO() {
+        RegisterRequest userDto = new RegisterRequest();
         userDto.setUsername(username);
         userDto.setPassword(password);
 

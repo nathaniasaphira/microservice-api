@@ -1,4 +1,4 @@
-package com.microservice.auth.dto;
+package com.microservice.auth.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthRequestDTO {
+public class LoginRequest {
 
     private String username;
     private String password;

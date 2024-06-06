@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.microservice.auth.dto.UserDTO;
+import com.microservice.auth.dto.response.LoginResponse;
 import com.microservice.auth.entity.User;
 import com.microservice.auth.repository.UserRepository;
 
@@ -18,13 +18,22 @@ public class AuthServiceImpl implements AuthService {
     private PasswordEncoder passwordEncoder;
     
     @Override
-    public UserDTO login(String username, String password) {
+    public LoginResponse login(String username, String password) {
         User user = userRepository.findByUsername(username);
 
         if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
             throw new RuntimeException("Invalid username or password");
         }
 
-        return UserDTO.fromUser(user);
+        String token = generateToken(user);
+        if (token != null){
+            return new LoginResponse("Login successful", token);    
+        }
+
+        return new LoginResponse("Login failed", token);
+    }
+
+    private String generateToken(User user) {
+        return "the-generated-token";
     }
 }

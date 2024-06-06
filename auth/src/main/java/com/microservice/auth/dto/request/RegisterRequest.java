@@ -1,4 +1,4 @@
-package com.microservice.auth.dto;
+package com.microservice.auth.dto.request;
 
 import com.microservice.auth.entity.User;
 
@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class RegisterRequest {
 
     private String username;
     private String password;
 
-    public static UserDTO fromUser(User user) {
-        UserDTO userDto = new UserDTO();
+    public static RegisterRequest fromUser(User user) {
+        RegisterRequest userDto = new RegisterRequest();
         userDto.setUsername(user.getUsername());
         userDto.setPassword(user.getPassword());
         
