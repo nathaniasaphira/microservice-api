@@ -1,0 +1,5 @@
+rootProject.name = 'microservice-api-java'
+
+include (
+    'auth'
+)
